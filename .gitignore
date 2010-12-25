@@ -1,0 +1,7 @@
+a.out
+*.wav
+*.mp3
+bin
+include
+lib
+share
