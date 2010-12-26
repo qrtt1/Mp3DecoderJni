@@ -162,7 +162,7 @@ JNIEXPORT void JNICALL Java_qty_player_Mp3Decoder_open
 
     /* rate  */
     fid = (*env)->GetFieldID(env, cls, "rate", "J");
-    (*env)->SetIntField(env, self, fid, (jlong) rate);
+    (*env)->SetLongField(env, self, fid, (jlong) rate);
 
     /* requiredBuffersize */
     fid = (*env)->GetFieldID(env, cls, "requiredBuffersize", "I");
