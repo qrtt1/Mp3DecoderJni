@@ -1,6 +1,5 @@
-EXTRA=-I/home/qrtt1/Downloads/mpg123-1.13.0/OUTPUT/include  -L/home/qrtt1/Downloads/mpg123-1.13.0/OUTPUT/lib 
+EXTRA=-Iinclude  -Llib 
 EXTRA_MPG123=-lmpg123
-#-Wl,-rpath=/home/qrtt1/Downloads/mpg123-1.13.0/OUTPUT/lib
 EXTRA_JNI=-I/opt/java/include/ -I/opt/java/include/linux
 
 ALL:

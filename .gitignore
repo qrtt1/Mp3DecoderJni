@@ -6,3 +6,4 @@ include
 lib
 share
 *.raw
+*.so
