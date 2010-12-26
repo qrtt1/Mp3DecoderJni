@@ -84,6 +84,8 @@ struct Mp3DecodeContext* open(const char* file)
     ctx->buffer_size = mpg123_outblock( ctx->handle );
     ctx->buffer = malloc( ctx->buffer_size );
 
+    printf("bs: %d\n", ctx->buffer_size);
+
     return ctx;
 
 FAILURE:
@@ -96,14 +98,17 @@ FAILURE:
 
 int main(){
 
+    printf("abc\n");
     struct Mp3DecodeContext* ctx;
     ctx = open("sample.mp3");
+    printf("ctx %p\n", ctx);
 
     FILE *fp = fopen("out.raw", "wb");
 
     if(ctx)
     {
         int cnt = 0;
+        printf("abc\n");
         while(nextFrame(ctx))
         {
             if(fp)
