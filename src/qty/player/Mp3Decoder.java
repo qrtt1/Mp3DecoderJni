@@ -5,6 +5,10 @@ import java.io.FileOutputStream;
 
 public class Mp3Decoder {
 
+    static {
+        System.loadLibrary("decoder");
+    }
+
     private int handle = 0;
     private long rate = 0;
     private int channels = 0;
@@ -12,7 +16,9 @@ public class Mp3Decoder {
     private int requiredBuffersize = 0;
 
     public native void open(File path);
+
     public native int decode(byte[] buffer);
+
     public native void close();
 
     @Override
@@ -28,13 +34,21 @@ public class Mp3Decoder {
         super.finalize();
     }
 
-    static {
-        System.loadLibrary("decoder");
+    public int getRequiredBufferSize() {
+        return requiredBuffersize;
+    }
+
+    public float getSampleRate() {
+        return rate;
+    }
+
+    public int getChannels() {
+        return channels;
     }
 
     public static void main(String[] args) {
         Mp3Decoder d = new Mp3Decoder();
-        String media = "/home/qrtt1/Downloads/mpg123-1.13.0/OUTPUT/sample.mp3";
+        String media = "sample.mp3";
         d.open(new File(media));
         System.out.println(d);
         byte[] buffer = new byte[d.requiredBuffersize];
@@ -50,4 +64,5 @@ public class Mp3Decoder {
             d.close();
         }
     }
+
 }
